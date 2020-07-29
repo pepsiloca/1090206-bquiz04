@@ -5,7 +5,7 @@ session_start();
 class DB
 {
 
-    private $dsn = "mysql:host=localhost;charset=utf8;dbname=db15";
+    private $dsn = "mysql:host=localhost;charset=utf8;dbname=db04";
     private $root = "root";
     private $password = "";
     private $table;
@@ -141,3 +141,10 @@ function to($url)
     header("location:" . $url);
 }
 
+
+$Admin=new DB('admin');
+$Member=new DB('member');
+$Goods=new DB('Goods');
+$Type=new DB('type');
+$Ord=new DB('ord');
+$Bottom=new DB('bottom');
