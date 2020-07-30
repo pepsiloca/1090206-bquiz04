@@ -2,8 +2,8 @@
 
 include_once "../base.php";
 
-$db=$_GET['table'];
-
+$table=$_GET['table'];
+$db=new DB($table);
 $acc=$_GET['acc'];
 $pw=$_GET['pw'];
 $chk=$db->find(['acc'=>$acc,'pw'=>$pw]);
