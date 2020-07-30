@@ -1,3 +1,4 @@
+  
 <h2>第一次購物</h2>
 <a href="?do=reg"><img src="icon/0413.jpg" alt=""></a>
 <h2>會員登入</h2>
@@ -31,7 +32,7 @@ function login(){
 
     $.get("api/chk_ans.php",{ans},function(res){
         if(res==1){
-            $.get("api/chk_pw.php",{acc,pw},function(res){
+            $.get("api/chk_pw.php",{'table':'member',acc,pw},function(res){
                 if(res==1){
                     location.href='index.php';
                 }else{
