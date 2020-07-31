@@ -55,12 +55,12 @@
             <?php
             $bigs=$Type->all(['parent'=>0]);
             foreach($bigs as $b){
-                echo "<div class='ww'><a href=''>".$b['name']."</a>";
+                echo "<div class='ww'><a href=''>".$b['name']."(".$Goods->count(['sh'=>1,'big'=>$b['id']]).")</a>";
                 $mids=$Type->all(['parent'=>$b['id']]);
                 if(!empty($mids)){
                     echo "<div class='s'>";
                     foreach($mids as $m){
-                        echo "<a href=''>".$m['name']."</a>";
+                        echo "<a href=''>".$m['name']."(".$Goods->count(['sh'=>1,'mid'=>$m['id']]).")</a>";
                     }
                     echo "</div>" ; 
                 }
