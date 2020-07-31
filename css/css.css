@@ -35,6 +35,8 @@ body
 	margin:10px auto 10px auto;
 	color:#65350A;
 }
+
+
 .ct
 {
 	text-align:center;
@@ -101,6 +103,11 @@ input[type=text],input[type=password]
 {
 	display:none;
 }
+
+#left .s a{
+	background-color: rgb(155, 217, 253);
+}
+
 div.ww:hover > div.s
 {
 	display:block;
