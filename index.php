@@ -28,14 +28,15 @@
                 <?php
                 if(empty($_SESSION['member'])){
                 ?>
-               <a href="?do=login">會員登入</a> |
-               <?php
+                <a href="?do=login">會員登入</a> |
+                <?php
                 }else{
-               ?>
-               <a href="javascript:location.hrf='api/logout.php?logout=member'">登出</a>
-                <?php    
+                ?>
+                <a href="javascript:location.href='api/logout.php?logout=member'">登出</a> |
+                <?php
                 }
                 ?>
+
                 <?php
                 if(empty($_SESSION['admin'])){
                 ?>
@@ -52,22 +53,23 @@
         </div>
         <div id="left" class="ct">
             <div style="min-height:400px;">
-            <?php
-            $bigs=$Type->all(['parent'=>0]);
-            foreach($bigs as $b){
-                echo "<div class='ww'><a href=''>".$b['name']."(".$Goods->count(['sh'=>1,'big'=>$b['id']]).")</a>";
-                $mids=$Type->all(['parent'=>$b['id']]);
-                if(!empty($mids)){
-                    echo "<div class='s'>";
-                    foreach($mids as $m){
-                        echo "<a href=''>".$m['name']."(".$Goods->count(['sh'=>1,'mid'=>$m['id']]).")</a>";
-                    }
-                    echo "</div>" ; 
-                }
-                echo "</div>";
-            }
-            
-            ?>
+                <div class="ww"><a href="?type=0">全部商品(<?=$Goods->count(['sh'=>1]);?>)</a></div>
+              <?php
+              $bigs=$Type->all(['parent'=>0]);
+              foreach($bigs as $b){
+                  echo "<div class='ww'><a href='?type=".$b['id']."'>".$b['name']."(".$Goods->count(['sh'=>1,'big'=>$b['id']]).")</a>";
+                  $mids=$Type->all(['parent'=>$b['id']]);
+                  if(!empty($mids)){
+                      echo "<div class='s'>";
+                      foreach($mids as $m){
+                          echo "<a href='?type=".$m['id']."'>".$m['name']."(".$Goods->count(['sh'=>1,'mid'=>$m['id']]).")</a>";
+                      }
+                      echo "</div>";
+                  }
+                  echo "</div>";
+              }
+              
+              ?>
 
             </div>
             <span>
