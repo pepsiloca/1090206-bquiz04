@@ -7,55 +7,44 @@
 </div>
 <table class="all type-list"></table>
 
+
+<h2 class="ct">商品管理</h2>
+<div class="ct"><button onclick="location.href='?do=add_goods'">新增商品</button></div>
+
+
+
 <script>
 getTypeList()
 getBigOption()
-
-
 function addBig(){
-    $.post("api/add_big.php",{'name':$("#big").val(),'parent':0},function(){
+    $.post("api/save_type.php",{'name':$("#big").val(),'parent':0},function(){
         getBigOption()
         getTypeList()
     })
 }
-
-
 function edit(id){
     let newName=prompt("請輸入要修改的分類名稱",$("#t"+id).html())
     if(newName!=null){
-
         $("#t"+id).html(newName);
-        $.post("api/save_type",{id,newNeme})
+        $.post("api/edit_type.php",{id,newName})
     }
 }
-
-
 function getBigOption(){
     $.get("api/get_big.php",function(options){
-        $("#mid").html(options)
+            $("#mid").html(options)
     })
 }
-
-
-
 function addMid(){
     let name=$("#mid_name").val();
     let big=$("#mid").val();
-
-    $.post("aip/save_type.php",{'name':name,'parent':big},function(){
+    $.post("api/save_type.php",{'name':name,'parent':big},function(){
         getBigOption()
         getTypeList()
     })
-
 }
-
-
 function getTypeList(){
     $.get("api/get_type_list.php",function(list){
         $(".type-list").html(list)
     })
 }
-
-
-
 </script>
